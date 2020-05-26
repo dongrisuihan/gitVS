@@ -16,7 +16,7 @@ from utils import progress_bar
 import os
 import argparse
 import logging
-from models.lenet import LeNet
+from models.lenet import MyLeNet
 
 
 parser = argparse.ArgumentParser(description='PyTorch CIFAR10 Training ResNet')
@@ -61,7 +61,7 @@ class Cifar_VGG:
         self.train_data, self.test_data = data_provider(
             self.dataset, args.data_path, self.batchsize,download=False)
        
-        self.net =LeNet()
+        self.net =MyLeNet()
        
         self.criterion = nn.CrossEntropyLoss()
         self.weight_decay = 1e-4
@@ -211,6 +211,7 @@ class Cifar_VGG:
                 logger.info('learning rate:' + str(self.lr))
                 # self.optimizer = optim.SGD([{
                 #     'params': self.conv_weight + self.bn_weight,
+
                 #     'weight_decay': self.weight_decay
                 # }],
                 #                            lr=self.lr,

@@ -1,6 +1,7 @@
 '''LeNet in PyTorch.'''
 import torch.nn as nn
 import torch.nn.functional as F
+import torch as torch
 
 class LeNet(nn.Module):
     def __init__(self):
@@ -20,4 +21,24 @@ class LeNet(nn.Module):
         out = F.relu(self.fc1(out))
         out = F.relu(self.fc2(out))
         out = self.fc3(out)
+        return out
+
+class MyLeNet(nn.Module):
+    def __init__(self):
+        super(MyLeNet, self).__init__()
+        self.conv1 = nn.Conv2d(1, 6, 5,padding=2)
+        self.conv2 = nn.Conv2d(6, 16, 5,padding=2)
+        self.conv3 = nn.Conv2d(16, 32, 5,padding=2)
+        self.fc   = nn.Linear(32, 10)
+
+    def forward(self, x):
+        out = F.relu(self.conv1(x))
+        out = F.max_pool2d(out, 2)
+        out = F.relu(self.conv2(out))
+        out = F.max_pool2d(out, 2)
+        out = F.relu(self.conv3(out))
+        out = F.max_pool2d(out, 7)
+        # print(out.size())
+        out = out.view(out.size(0), -1)
+        out = self.fc(out)
         return out
