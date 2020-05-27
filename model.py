@@ -29,16 +29,16 @@ parser.add_argument('--resume',
                     default=False,
                     action='store_true',
                     help='resume from checkpoint')
-# parser.add_argument(
-#     '--data_path',
-#     type=str,
-#     default=
-#     '/home/czq/文档/code/mnist')
 parser.add_argument(
     '--data_path',
     type=str,
     default=
-    '/data/home/chenzhiqiang/pytorch/code/data/mnist')
+    '/home/czq/文档/code/mnist')
+# parser.add_argument(
+#     '--data_path',
+#     type=str,
+#     default=
+#     '/data/home/chenzhiqiang/pytorch/code/data/mnist')
 parser.add_argument('-gpu', type=str, default="0")
 args = parser.parse_args()
 
@@ -64,7 +64,7 @@ class Cifar_VGG:
         self.train_acc = 0
 
         self.train_data, self.test_data = data_provider(
-            self.dataset, args.data_path, self.batchsize,download=True)
+            self.dataset, args.data_path, self.batchsize,download=False)
        
         self.net =MyLeNet()
        
