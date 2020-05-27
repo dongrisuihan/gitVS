@@ -34,7 +34,7 @@ parser.add_argument('--resume',
 #     type=str,
 #     default=
 #     '/home/czq/文档/code/mnist')
-    parser.add_argument(
+parser.add_argument(
     '--data_path',
     type=str,
     default=
