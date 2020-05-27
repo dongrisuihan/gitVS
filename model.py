@@ -22,7 +22,7 @@ from models.lenet import MyLeNet
 parser = argparse.ArgumentParser(description='PyTorch CIFAR10 Training ResNet')
 parser.add_argument('--savefile',
                     type=str,
-                    default='../savefile/mnist/test')
+                    default='./savefile/mnist/test')
 parser.add_argument('--lr', default=0.1, type=float, help='learning rate')
 parser.add_argument('--resume',
                     '-r',
