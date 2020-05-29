@@ -28,8 +28,8 @@ class MyLeNet(nn.Module):
         super(MyLeNet, self).__init__()
         self.conv1 = nn.Conv2d(1, 6, 5,padding=2)
         self.conv2 = nn.Conv2d(6, 16, 5,padding=2)
-        self.conv3 = nn.Conv2d(16, 16, 5,padding=2)
-        self.fc   = nn.Linear(16, 10)
+        self.conv3 = nn.Conv2d(16, 32, 5,padding=2)
+        self.fc   = nn.Linear(32, 10)
 
     def forward(self, x):
         out = F.relu(self.conv1(x))
