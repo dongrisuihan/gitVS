@@ -52,7 +52,7 @@ class Cifar_VGG:
     def __init__(self):
         logger.info('\n' + '*' * 100 + '\n' + '******init******\n' + '*' * 100)
         self.dataset = 'mnist'
-        self.batchsize = 64
+        self.batchsize = 128
         self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
         logger.info('device:' + self.device)
         self.savefile_checkpoint = args.savefile + '/checkpoint'
@@ -190,7 +190,7 @@ class Cifar_VGG:
                     init.kaiming_normal(m.weight, mode='fan_out')
                     self.conv_weight += [m.weight]
                     # self.bias += [m.bias]
-                    # init.constant(m.bias, 0)
+                    init.constant(m.bias, 0)
                 elif isinstance(m, nn.BatchNorm2d):
                     init.constant(m.weight, 1.)
                     init.constant(m.bias, 0)
